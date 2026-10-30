@@ -1,0 +1,113 @@
+:root {
+  --bg: #fdfdfb;
+  --text: #1f2328;
+  --muted: #5c636b;
+  --accent: #1a4a8a;
+  --accent-hover: #0d2f5e;
+  --rule: #e3e3de;
+  --max: 46rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181c;
+    --text: #e6e6e3;
+    --muted: #a0a6ad;
+    --accent: #8db8ef;
+    --accent-hover: #b8d4f7;
+    --rule: #2e3238;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.6 "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+/* Header + nav */
+header {
+  border-bottom: 1px solid var(--rule);
+}
+.header-inner, main, footer {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem 1.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
+}
+.site-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.site-title:hover { color: var(--text); text-decoration: none; }
+.site-title span {
+  display: block;
+  font-size: .85rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+nav { display: flex; gap: 1.25rem; font-family: system-ui, -apple-system, sans-serif; font-size: .95rem; }
+nav a { color: var(--muted); }
+nav a[aria-current="page"] { color: var(--text); font-weight: 600; }
+
+main { padding-top: 2rem; padding-bottom: 3rem; }
+
+h1 { font-size: 1.6rem; margin: 0 0 1rem; }
+h2 {
+  font-size: 1.15rem;
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Home intro */
+.intro { display: flow-root; }
+.intro img {
+  float: left;
+  width: 170px;
+  height: auto;
+  margin: .3rem 1.5rem 1rem 0;
+  border-radius: 4px;
+}
+@media (max-width: 520px) {
+  .intro img { float: none; display: block; margin: 0 0 1rem; }
+}
+
+/* Paper and course lists */
+.papers { list-style: none; padding: 0; margin: 0; }
+.papers li { margin-bottom: 1.25rem; }
+.papers .title { font-weight: 600; }
+.papers .authors, .papers .venue { display: block; color: var(--muted); font-size: .95rem; }
+.papers .venue em { color: var(--text); }
+.papers .links { font-family: system-ui, -apple-system, sans-serif; font-size: .85rem; }
+.papers .links a + a::before { content: " · "; color: var(--muted); }
+
+.course { margin-bottom: 2rem; }
+.course h3 { font-size: 1.05rem; margin: 0 0 .4rem; }
+.course h3 a { font-family: system-ui, -apple-system, sans-serif; font-size: .85rem; font-weight: 400; margin-left: .4rem; }
+.course p { margin: 0 0 .6rem; }
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  color: var(--muted);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: .85rem;
+}
+footer a { color: var(--muted); }
+footer a + a::before { content: " · "; }
