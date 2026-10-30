@@ -87,11 +87,17 @@ h2 {
   .intro img { float: none; display: block; margin: 0 0 1rem; }
 }
 
+.contact { font-family: system-ui, -apple-system, sans-serif; font-size: .9rem; }
+.contact a + a::before { content: " · "; color: var(--muted); }
+
 /* Paper and course lists */
 .papers { list-style: none; padding: 0; margin: 0; }
 .papers li { margin-bottom: 1.25rem; }
-.papers .title { font-weight: 600; }
+.papers .title { font-weight: 600; color: var(--text); }
+.papers a.title:hover { color: var(--accent); }
 .papers .authors, .papers .venue { display: block; color: var(--muted); font-size: .95rem; }
+.papers .authors a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+.papers .authors a:hover { color: var(--accent); }
 .papers .venue em { color: var(--text); }
 .papers .links { font-family: system-ui, -apple-system, sans-serif; font-size: .85rem; }
 .papers .links a + a::before { content: " · "; color: var(--muted); }
