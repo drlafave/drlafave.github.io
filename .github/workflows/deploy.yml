@@ -1,0 +1,41 @@
+# Builds and publishes the site to GitHub Pages.
+# The CV is pulled fresh from Dropbox on every deploy (and once a day),
+# so updating the Dropbox file is all it takes to update the site.
+name: Deploy site
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "0 9 * * *"   # daily, ~5am Eastern
+  workflow_dispatch:       # "Run workflow" button in the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch CV from Dropbox
+        run: |
+          curl -sSfL -o files/CV_lafave.pdf "https://www.dropbox.com/s/b0usdci17cmh3vt/CV_lafave.pdf?dl=1"
+          head -c 4 files/CV_lafave.pdf | grep -q '%PDF' || { echo "Dropbox did not return a PDF"; exit 1; }
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4

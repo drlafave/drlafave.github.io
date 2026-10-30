@@ -2,8 +2,9 @@
   --bg: #fdfdfb;
   --text: #1f2328;
   --muted: #5c636b;
-  --accent: #1a4a8a;
-  --accent-hover: #0d2f5e;
+  --brand: #012169; /* Colby indigo */
+  --accent: #012169;
+  --accent-hover: #2b4fa3;
   --rule: #e3e3de;
   --max: 46rem;
 }
@@ -12,6 +13,7 @@
     --bg: #16181c;
     --text: #e6e6e3;
     --muted: #a0a6ad;
+    --brand: #3d5fb8;
     --accent: #8db8ef;
     --accent-hover: #b8d4f7;
     --rule: #2e3238;
@@ -32,6 +34,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 
 /* Header + nav */
 header {
+  border-top: 5px solid var(--brand);
   border-bottom: 1px solid var(--rule);
 }
 .header-inner, main, footer {
@@ -49,14 +52,22 @@ header {
   padding-bottom: 1rem;
 }
 .site-title {
-  font-size: 1.35rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.9rem;
   font-weight: 600;
-  color: var(--text);
+  letter-spacing: -.01em;
+  line-height: 1.15;
+  color: var(--brand);
 }
-.site-title:hover { color: var(--text); text-decoration: none; }
+@media (prefers-color-scheme: dark) {
+  .site-title, .site-title:hover { color: var(--text); }
+}
+.site-title:hover { color: var(--brand); text-decoration: none; }
 .site-title span {
   display: block;
-  font-size: .85rem;
+  margin-top: .3rem;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: .9rem;
   font-weight: 400;
   color: var(--muted);
 }
@@ -66,7 +77,7 @@ nav a[aria-current="page"] { color: var(--text); font-weight: 600; }
 
 main { padding-top: 2rem; padding-bottom: 3rem; }
 
-h1 { font-size: 1.6rem; margin: 0 0 1rem; }
+h1 { font-family: "Fraunces", Georgia, serif; font-size: 1.8rem; font-weight: 600; margin: 0 0 1rem; }
 h2 {
   font-size: 1.15rem;
   margin: 2.5rem 0 1rem;
